@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.dealerLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.playerLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
@@ -38,6 +39,8 @@
             this.dealerCountLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.cardImageList = new System.Windows.Forms.ImageList(this.components);
+            this.miscImageList = new System.Windows.Forms.ImageList(this.components);
             this.SuspendLayout();
             // 
             // dealerLayoutPanel
@@ -69,6 +72,7 @@
             this.standButton.TabIndex = 2;
             this.standButton.Text = "Stand";
             this.standButton.UseVisualStyleBackColor = false;
+            this.standButton.Click += new System.EventHandler(this.standButton_Click);
             // 
             // hitButton
             // 
@@ -94,6 +98,7 @@
             this.dealButton.TabIndex = 4;
             this.dealButton.Text = "New Game";
             this.dealButton.UseVisualStyleBackColor = false;
+            this.dealButton.Click += new System.EventHandler(this.dealButton_Click);
             // 
             // playerCountLabel
             // 
@@ -139,6 +144,69 @@
             this.label3.TabIndex = 9;
             this.label3.Text = "Player:";
             // 
+            // cardImageList
+            // 
+            this.cardImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("cardImageList.ImageStream")));
+            this.cardImageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.cardImageList.Images.SetKeyName(0, "2C.png");
+            this.cardImageList.Images.SetKeyName(1, "2D.png");
+            this.cardImageList.Images.SetKeyName(2, "2H.png");
+            this.cardImageList.Images.SetKeyName(3, "2S.png");
+            this.cardImageList.Images.SetKeyName(4, "3C.png");
+            this.cardImageList.Images.SetKeyName(5, "3D.png");
+            this.cardImageList.Images.SetKeyName(6, "3H.png");
+            this.cardImageList.Images.SetKeyName(7, "3S.png");
+            this.cardImageList.Images.SetKeyName(8, "4C.png");
+            this.cardImageList.Images.SetKeyName(9, "4D.png");
+            this.cardImageList.Images.SetKeyName(10, "4H.png");
+            this.cardImageList.Images.SetKeyName(11, "4S.png");
+            this.cardImageList.Images.SetKeyName(12, "5C.png");
+            this.cardImageList.Images.SetKeyName(13, "5D.png");
+            this.cardImageList.Images.SetKeyName(14, "5H.png");
+            this.cardImageList.Images.SetKeyName(15, "5S.png");
+            this.cardImageList.Images.SetKeyName(16, "6C.png");
+            this.cardImageList.Images.SetKeyName(17, "6D.png");
+            this.cardImageList.Images.SetKeyName(18, "6H.png");
+            this.cardImageList.Images.SetKeyName(19, "6S.png");
+            this.cardImageList.Images.SetKeyName(20, "7C.png");
+            this.cardImageList.Images.SetKeyName(21, "7D.png");
+            this.cardImageList.Images.SetKeyName(22, "7H.png");
+            this.cardImageList.Images.SetKeyName(23, "7S.png");
+            this.cardImageList.Images.SetKeyName(24, "8C.png");
+            this.cardImageList.Images.SetKeyName(25, "8D.png");
+            this.cardImageList.Images.SetKeyName(26, "8H.png");
+            this.cardImageList.Images.SetKeyName(27, "8S.png");
+            this.cardImageList.Images.SetKeyName(28, "9C.png");
+            this.cardImageList.Images.SetKeyName(29, "9D.png");
+            this.cardImageList.Images.SetKeyName(30, "9H.png");
+            this.cardImageList.Images.SetKeyName(31, "9S.png");
+            this.cardImageList.Images.SetKeyName(32, "10C.png");
+            this.cardImageList.Images.SetKeyName(33, "10D.png");
+            this.cardImageList.Images.SetKeyName(34, "10H.png");
+            this.cardImageList.Images.SetKeyName(35, "10S.png");
+            this.cardImageList.Images.SetKeyName(36, "AC.png");
+            this.cardImageList.Images.SetKeyName(37, "AD.png");
+            this.cardImageList.Images.SetKeyName(38, "AH.png");
+            this.cardImageList.Images.SetKeyName(39, "AS.png");
+            this.cardImageList.Images.SetKeyName(40, "JC.png");
+            this.cardImageList.Images.SetKeyName(41, "JD.png");
+            this.cardImageList.Images.SetKeyName(42, "JH.png");
+            this.cardImageList.Images.SetKeyName(43, "JS.png");
+            this.cardImageList.Images.SetKeyName(44, "KC.png");
+            this.cardImageList.Images.SetKeyName(45, "KD.png");
+            this.cardImageList.Images.SetKeyName(46, "KH.png");
+            this.cardImageList.Images.SetKeyName(47, "KS.png");
+            this.cardImageList.Images.SetKeyName(48, "QC.png");
+            this.cardImageList.Images.SetKeyName(49, "QD.png");
+            this.cardImageList.Images.SetKeyName(50, "QH.png");
+            this.cardImageList.Images.SetKeyName(51, "QS.png");
+            // 
+            // miscImageList
+            // 
+            this.miscImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("miscImageList.ImageStream")));
+            this.miscImageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.miscImageList.Images.SetKeyName(0, "blue_back.png");
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -174,6 +242,8 @@
         private System.Windows.Forms.Label dealerCountLabel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ImageList cardImageList;
+        private System.Windows.Forms.ImageList miscImageList;
     }
 }
 
