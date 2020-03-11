@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -14,7 +15,7 @@ namespace Blackjack
     public partial class Form1 : Form
     {
 
-        List<Card> deck = new List<Card>()
+        List<Card> fullDeck = new List<Card>()
             {
                 #region spades
 
@@ -89,6 +90,8 @@ namespace Blackjack
                 #endregion
             };
 
+        List<Card> Deck = new List<Card>();
+
         Random random = new Random();
 
         public Form1()
@@ -98,7 +101,7 @@ namespace Blackjack
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void hitButton_Click(object sender, EventArgs e)
@@ -108,15 +111,35 @@ namespace Blackjack
 
         }
 
-        private void calcPlayerValue()
+        private int calcPlayerValue()
         {
             int count = 0;
             foreach (Control c in playerLayoutPanel.Controls)
             {
-                count = count + deck[Convert.ToInt16(c.Tag)].Value;
+                count = count + Convert.ToInt16(c.Tag);
+                
             }
 
+            //some simple ace logic
+            if(count > 21)
+            {
+                foreach (Control c in playerLayoutPanel.Controls)
+                {
+                    if(Convert.ToInt16(c.Tag) == 11)
+                    {
+                        count -= 10;
+                        if (count <= 21)
+                        {
+                            break;
+                        }
+                    }                    
+
+                }
+            }
+           
+
             playerCountLabel.Text = count.ToString();
+            return count;
         }
 
         private int calcDealerValue()
@@ -126,9 +149,26 @@ namespace Blackjack
             {
                 if (((PictureBox)c).Image == null)
                 {
-                    count = count + deck[Convert.ToInt16(c.Tag)].Value;
+                    count = count + Convert.ToInt16(c.Tag);
                 }
 
+            }
+
+            //some simple ace logic
+            if (count > 21)
+            {
+                foreach (Control c in dealerLayoutPanel.Controls)
+                {
+                    if (Convert.ToInt16(c.Tag) == 11)
+                    {
+                        count -= 10;
+                        if (count <= 21)
+                        {
+                            break;
+                        }
+                    }
+
+                }
             }
 
             dealerCountLabel.Text = count.ToString();
@@ -168,35 +208,62 @@ namespace Blackjack
                 dealerLayoutPanel.Controls.Add(getNewCard());
                 Thread.Sleep(250);
             }
+
+            checkIfWon();
         }
+
         private PictureBox getNewCard(bool hidden = false)
         {
 
-            int randomIndex = random.Next(0, deck.Count - 1);
+            int randomIndex = random.Next(0, Deck.Count - 1);
 
-            Card card = deck[randomIndex];
+            Card card = Deck[randomIndex];
 
             PictureBox cardHolder = new PictureBox();
             cardHolder.Size = new Size(100, 140);
 
             if (hidden) { cardHolder.Image = miscImageList.Images[0]; }
 
-            cardHolder.Tag = randomIndex;
+            cardHolder.Tag = card.Value;
             cardHolder.BackgroundImage = cardImageList.Images[cardImageList.Images.IndexOfKey(card.ImageName)];
 
+            Deck.RemoveAt(randomIndex);
+            deckSizeLabel.Text = Deck.Count.ToString();
+            playSound(Properties.Resources.cardSlide6);
             return cardHolder;
+        }
+
+        private void playSound(System.IO.UnmanagedMemoryStream path)
+        {
+            System.IO.Stream str = path;
+            System.Media.SoundPlayer snd = new System.Media.SoundPlayer(str);
+            snd.Play();
         }
 
         private void checkIfWon()
         {
-            if(playerCountLabel.Text == "21")
-            {
+            int playerhand = calcPlayerValue();
+            int dealerhand = calcDealerValue();
 
+            //first see if player is bust
+            if(playerhand <= 21 && (dealerhand > 21 || playerhand > dealerhand))
+            {
+                ResetGame();
             }
+            else
+            {
+                MessageBox.Show("lost");
+            }
+
+            ResetGame();
+
         }
 
         private void dealButton_Click(object sender, EventArgs e)
         {
+            Deck.Clear();
+            Deck = new List<Card>(fullDeck);
+            deckSizeLabel.Text = Deck.Count.ToString();
             ResetGame();
 
         }
@@ -204,6 +271,16 @@ namespace Blackjack
         private void standButton_Click(object sender, EventArgs e)
         {
             dealerTurn();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void deckSizeLabel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -41,24 +41,29 @@
             this.label3 = new System.Windows.Forms.Label();
             this.cardImageList = new System.Windows.Forms.ImageList(this.components);
             this.miscImageList = new System.Windows.Forms.ImageList(this.components);
+            this.deckSizeLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // dealerLayoutPanel
             // 
-            this.dealerLayoutPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.dealerLayoutPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dealerLayoutPanel.Location = new System.Drawing.Point(21, 54);
+            this.dealerLayoutPanel.Location = new System.Drawing.Point(28, 66);
+            this.dealerLayoutPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dealerLayoutPanel.Name = "dealerLayoutPanel";
-            this.dealerLayoutPanel.Size = new System.Drawing.Size(751, 143);
+            this.dealerLayoutPanel.Size = new System.Drawing.Size(1068, 191);
             this.dealerLayoutPanel.TabIndex = 0;
             // 
             // playerLayoutPanel
             // 
-            this.playerLayoutPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.playerLayoutPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.playerLayoutPanel.Location = new System.Drawing.Point(21, 242);
+            this.playerLayoutPanel.Location = new System.Drawing.Point(28, 298);
+            this.playerLayoutPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.playerLayoutPanel.Name = "playerLayoutPanel";
-            this.playerLayoutPanel.Size = new System.Drawing.Size(751, 143);
+            this.playerLayoutPanel.Size = new System.Drawing.Size(1068, 191);
             this.playerLayoutPanel.TabIndex = 1;
             // 
             // standButton
@@ -66,9 +71,10 @@
             this.standButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.standButton.BackColor = System.Drawing.Color.YellowGreen;
             this.standButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.standButton.Location = new System.Drawing.Point(404, 471);
+            this.standButton.Location = new System.Drawing.Point(573, 494);
+            this.standButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.standButton.Name = "standButton";
-            this.standButton.Size = new System.Drawing.Size(229, 36);
+            this.standButton.Size = new System.Drawing.Size(305, 44);
             this.standButton.TabIndex = 2;
             this.standButton.Text = "Stand";
             this.standButton.UseVisualStyleBackColor = false;
@@ -79,9 +85,10 @@
             this.hitButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.hitButton.BackColor = System.Drawing.Color.YellowGreen;
             this.hitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.hitButton.Location = new System.Drawing.Point(189, 471);
+            this.hitButton.Location = new System.Drawing.Point(286, 494);
+            this.hitButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.hitButton.Name = "hitButton";
-            this.hitButton.Size = new System.Drawing.Size(209, 36);
+            this.hitButton.Size = new System.Drawing.Size(279, 44);
             this.hitButton.TabIndex = 3;
             this.hitButton.Text = "Hit";
             this.hitButton.UseVisualStyleBackColor = false;
@@ -92,9 +99,10 @@
             this.dealButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.dealButton.BackColor = System.Drawing.Color.YellowGreen;
             this.dealButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.dealButton.Location = new System.Drawing.Point(8, 471);
+            this.dealButton.Location = new System.Drawing.Point(11, 494);
+            this.dealButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dealButton.Name = "dealButton";
-            this.dealButton.Size = new System.Drawing.Size(112, 36);
+            this.dealButton.Size = new System.Drawing.Size(149, 44);
             this.dealButton.TabIndex = 4;
             this.dealButton.Text = "New Game";
             this.dealButton.UseVisualStyleBackColor = false;
@@ -105,9 +113,10 @@
             this.playerCountLabel.AutoSize = true;
             this.playerCountLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.playerCountLabel.ForeColor = System.Drawing.Color.Yellow;
-            this.playerCountLabel.Location = new System.Drawing.Point(110, 215);
+            this.playerCountLabel.Location = new System.Drawing.Point(147, 265);
+            this.playerCountLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.playerCountLabel.Name = "playerCountLabel";
-            this.playerCountLabel.Size = new System.Drawing.Size(21, 24);
+            this.playerCountLabel.Size = new System.Drawing.Size(27, 29);
             this.playerCountLabel.TabIndex = 5;
             this.playerCountLabel.Text = "0";
             // 
@@ -116,9 +125,10 @@
             this.dealerCountLabel.AutoSize = true;
             this.dealerCountLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dealerCountLabel.ForeColor = System.Drawing.Color.Yellow;
-            this.dealerCountLabel.Location = new System.Drawing.Point(110, 27);
+            this.dealerCountLabel.Location = new System.Drawing.Point(147, 33);
+            this.dealerCountLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.dealerCountLabel.Name = "dealerCountLabel";
-            this.dealerCountLabel.Size = new System.Drawing.Size(21, 24);
+            this.dealerCountLabel.Size = new System.Drawing.Size(27, 29);
             this.dealerCountLabel.TabIndex = 6;
             this.dealerCountLabel.Text = "0";
             // 
@@ -127,9 +137,10 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Yellow;
-            this.label1.Location = new System.Drawing.Point(16, 26);
+            this.label1.Location = new System.Drawing.Point(21, 32);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 25);
+            this.label1.Size = new System.Drawing.Size(109, 31);
             this.label1.TabIndex = 7;
             this.label1.Text = "Dealer:";
             // 
@@ -138,9 +149,10 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Yellow;
-            this.label3.Location = new System.Drawing.Point(18, 214);
+            this.label3.Location = new System.Drawing.Point(24, 263);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(86, 25);
+            this.label3.Size = new System.Drawing.Size(106, 31);
             this.label3.TabIndex = 9;
             this.label3.Text = "Player:";
             // 
@@ -207,12 +219,26 @@
             this.miscImageList.TransparentColor = System.Drawing.Color.Transparent;
             this.miscImageList.Images.SetKeyName(0, "blue_back.png");
             // 
+            // deckSizeLabel
+            // 
+            this.deckSizeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.deckSizeLabel.AutoSize = true;
+            this.deckSizeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deckSizeLabel.ForeColor = System.Drawing.Color.White;
+            this.deckSizeLabel.Location = new System.Drawing.Point(167, 500);
+            this.deckSizeLabel.Name = "deckSizeLabel";
+            this.deckSizeLabel.Size = new System.Drawing.Size(41, 29);
+            this.deckSizeLabel.TabIndex = 11;
+            this.deckSizeLabel.Text = "52";
+            this.deckSizeLabel.Click += new System.EventHandler(this.deckSizeLabel_Click);
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGreen;
-            this.ClientSize = new System.Drawing.Size(784, 519);
+            this.ClientSize = new System.Drawing.Size(1112, 553);
+            this.Controls.Add(this.deckSizeLabel);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dealerCountLabel);
@@ -223,6 +249,7 @@
             this.Controls.Add(this.playerLayoutPanel);
             this.Controls.Add(this.dealerLayoutPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
             this.Text = "Blackjack";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -244,6 +271,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ImageList cardImageList;
         private System.Windows.Forms.ImageList miscImageList;
+        private System.Windows.Forms.Label deckSizeLabel;
     }
 }
 
