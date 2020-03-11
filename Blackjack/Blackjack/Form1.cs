@@ -101,7 +101,8 @@ namespace Blackjack
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+            winnerBanner.Hide();
+            looseBanner.Hide();
         }
 
         private void hitButton_Click(object sender, EventArgs e)
@@ -136,7 +137,6 @@ namespace Blackjack
 
                 }
             }
-           
 
             playerCountLabel.Text = count.ToString();
             return count;
@@ -177,6 +177,10 @@ namespace Blackjack
 
         private void ResetGame()
         {
+            Deck.Clear();
+            Deck = new List<Card>(fullDeck);
+            deckSizeLabel.Text = Deck.Count.ToString();
+            
             playerLayoutPanel.Controls.Clear();
             dealerLayoutPanel.Controls.Clear();
 
@@ -192,12 +196,16 @@ namespace Blackjack
 
             calcDealerValue();
             calcPlayerValue();
+
+            hitButton.Enabled = true;
+            standButton.Enabled = true;
         }
 
 
         private void playerHit()
         {
             playerLayoutPanel.Controls.Add(getNewCard());
+            
         }
 
         private void dealerTurn()
@@ -209,7 +217,7 @@ namespace Blackjack
                 Thread.Sleep(250);
             }
 
-            checkIfWon();
+            checkWhoWon();
         }
 
         private PictureBox getNewCard(bool hidden = false)
@@ -222,7 +230,7 @@ namespace Blackjack
             PictureBox cardHolder = new PictureBox();
             cardHolder.Size = new Size(100, 140);
 
-            if (hidden) { cardHolder.Image = miscImageList.Images[0]; }
+            if (hidden) { cardHolder.Image = cardImageList.Images[cardImageList.Images.IndexOfKey("blue_back.png")]; }
 
             cardHolder.Tag = card.Value;
             cardHolder.BackgroundImage = cardImageList.Images[cardImageList.Images.IndexOfKey(card.ImageName)];
@@ -236,34 +244,37 @@ namespace Blackjack
         private void playSound(System.IO.UnmanagedMemoryStream path)
         {
             System.IO.Stream str = path;
-            System.Media.SoundPlayer snd = new System.Media.SoundPlayer(str);
-            snd.Play();
+            SoundPlayer snd = new SoundPlayer(str);
+
+            if (muteButton.Tag.ToString() == "0") { snd.Play(); }
+            
         }
 
-        private void checkIfWon()
+        private void checkWhoWon()
         {
             int playerhand = calcPlayerValue();
             int dealerhand = calcDealerValue();
 
             //first see if player is bust
+            hitButton.Enabled = false;
+            standButton.Enabled = false;
             if(playerhand <= 21 && (dealerhand > 21 || playerhand > dealerhand))
             {
-                ResetGame();
+                playSound(Properties.Resources.Ta_Da_SoundBible_com_1884170640);
+                winnerBanner.Show();                
+                bannerTimer.Start();
             }
             else
             {
-                MessageBox.Show("lost");
+                playSound(Properties.Resources.CD_Skipping_SoundBible_com_816257683);
+                looseBanner.Show();
+                bannerTimer.Start();
             }
-
-            ResetGame();
 
         }
 
         private void dealButton_Click(object sender, EventArgs e)
-        {
-            Deck.Clear();
-            Deck = new List<Card>(fullDeck);
-            deckSizeLabel.Text = Deck.Count.ToString();
+        {           
             ResetGame();
 
         }
@@ -282,5 +293,28 @@ namespace Blackjack
         {
 
         }
+
+        private void bannerTimer_Tick(object sender, EventArgs e)
+        {
+            winnerBanner.Hide();
+            looseBanner.Hide();
+            bannerTimer.Stop();
+            ResetGame();
+        }
+
+        private void muteButton_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (muteButton.Tag.ToString() == "0")
+            {
+                muteButton.BackgroundImage = Properties.Resources.unmute;
+                muteButton.Tag = 1;
+            }
+            else
+            {
+                muteButton.BackgroundImage = Properties.Resources.mute;
+                muteButton.Tag = 0;
+            }
+        }
+
     }
 }

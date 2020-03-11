@@ -72,9 +72,47 @@ namespace Blackjack.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
+        internal static System.IO.UnmanagedMemoryStream CD_Skipping_SoundBible_com_816257683 {
+            get {
+                return ResourceManager.GetStream("CD_Skipping_SoundBible_com_816257683", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap mute {
+            get {
+                object obj = ResourceManager.GetObject("mute", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
         internal static System.IO.UnmanagedMemoryStream shuffling_cards_1 {
             get {
                 return ResourceManager.GetStream("shuffling_cards_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Ta_Da_SoundBible_com_1884170640 {
+            get {
+                return ResourceManager.GetStream("Ta_Da_SoundBible_com_1884170640", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap unmute {
+            get {
+                object obj = ResourceManager.GetObject("unmute", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

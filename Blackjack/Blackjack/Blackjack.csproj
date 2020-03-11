@@ -84,6 +84,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\unmute.png" />
+    <None Include="Resources\mute.png" />
+    <None Include="Resources\Ta Da-SoundBible.com-1884170640.wav" />
+    <None Include="Resources\CD Skipping-SoundBible.com-816257683.wav" />
+    <None Include="Resources\Grey Textured Fade Wallpaper for Phones and Tablets.jpg" />
     <None Include="Resources\cardSlide6.wav" />
     <None Include="Resources\shuffling-cards-1.wav" />
     <None Include="Resources\shuffling-cards-1.mp3" />
