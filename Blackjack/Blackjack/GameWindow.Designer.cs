@@ -1,6 +1,6 @@
 ﻿namespace Blackjack
 {
-    partial class Form1
+    partial class GameWindow
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameWindow));
             this.dealerLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.playerLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.standButton = new System.Windows.Forms.Button();
