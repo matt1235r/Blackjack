@@ -61,7 +61,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dealerLayoutPanel.BackColor = System.Drawing.Color.Transparent;
             this.dealerLayoutPanel.Location = new System.Drawing.Point(28, 59);
-            this.dealerLayoutPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dealerLayoutPanel.Margin = new System.Windows.Forms.Padding(4);
             this.dealerLayoutPanel.Name = "dealerLayoutPanel";
             this.dealerLayoutPanel.Size = new System.Drawing.Size(1121, 194);
             this.dealerLayoutPanel.TabIndex = 0;
@@ -72,7 +72,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.playerLayoutPanel.BackColor = System.Drawing.Color.Transparent;
             this.playerLayoutPanel.Location = new System.Drawing.Point(28, 290);
-            this.playerLayoutPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.playerLayoutPanel.Margin = new System.Windows.Forms.Padding(4);
             this.playerLayoutPanel.Name = "playerLayoutPanel";
             this.playerLayoutPanel.Size = new System.Drawing.Size(1121, 194);
             this.playerLayoutPanel.TabIndex = 1;
@@ -84,7 +84,7 @@
             this.standButton.Enabled = false;
             this.standButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.standButton.Location = new System.Drawing.Point(600, 586);
-            this.standButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.standButton.Margin = new System.Windows.Forms.Padding(4);
             this.standButton.Name = "standButton";
             this.standButton.Size = new System.Drawing.Size(305, 44);
             this.standButton.TabIndex = 2;
@@ -101,7 +101,7 @@
             this.hitButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.hitButton.ImageList = this.miscImageList;
             this.hitButton.Location = new System.Drawing.Point(312, 586);
-            this.hitButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.hitButton.Margin = new System.Windows.Forms.Padding(4);
             this.hitButton.Name = "hitButton";
             this.hitButton.Size = new System.Drawing.Size(279, 44);
             this.hitButton.TabIndex = 3;
@@ -121,7 +121,7 @@
             this.dealButton.BackColor = System.Drawing.Color.YellowGreen;
             this.dealButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.dealButton.Location = new System.Drawing.Point(11, 586);
-            this.dealButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dealButton.Margin = new System.Windows.Forms.Padding(4);
             this.dealButton.Name = "dealButton";
             this.dealButton.Size = new System.Drawing.Size(149, 44);
             this.dealButton.TabIndex = 4;
@@ -247,7 +247,7 @@
             this.winnerBanner.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.winnerBanner.Controls.Add(this.label2);
             this.winnerBanner.Location = new System.Drawing.Point(248, 517);
-            this.winnerBanner.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.winnerBanner.Margin = new System.Windows.Forms.Padding(4);
             this.winnerBanner.Name = "winnerBanner";
             this.winnerBanner.Size = new System.Drawing.Size(710, 54);
             this.winnerBanner.TabIndex = 12;
@@ -278,7 +278,7 @@
             this.looseBanner.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.looseBanner.Controls.Add(this.label4);
             this.looseBanner.Location = new System.Drawing.Point(248, 517);
-            this.looseBanner.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.looseBanner.Margin = new System.Windows.Forms.Padding(4);
             this.looseBanner.Name = "looseBanner";
             this.looseBanner.Size = new System.Drawing.Size(710, 54);
             this.looseBanner.TabIndex = 13;
@@ -305,7 +305,7 @@
             this.panel1.Controls.Add(this.deckSizeLabel);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 508);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1165, 137);
             this.panel1.TabIndex = 15;
@@ -317,7 +317,7 @@
             this.muteButton.BackgroundImage = global::Blackjack.Properties.Resources.mute;
             this.muteButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.muteButton.Location = new System.Drawing.Point(1100, 78);
-            this.muteButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.muteButton.Margin = new System.Windows.Forms.Padding(4);
             this.muteButton.Name = "muteButton";
             this.muteButton.Size = new System.Drawing.Size(59, 53);
             this.muteButton.TabIndex = 14;
@@ -360,10 +360,11 @@
             this.Controls.Add(this.dealerLayoutPanel);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Blackjack";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.winnerBanner.ResumeLayout(false);
             this.winnerBanner.PerformLayout();
             this.looseBanner.ResumeLayout(false);

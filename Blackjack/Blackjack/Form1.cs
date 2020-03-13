@@ -316,5 +316,17 @@ namespace Blackjack
             }
         }
 
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.H)
+            {
+                hitButton.PerformClick();
+            }
+            else if (e.KeyCode == Keys.S)
+            {
+                standButton.PerformClick();
+            }
+            MessageBox.Show("Test");
+        }
     }
 }
