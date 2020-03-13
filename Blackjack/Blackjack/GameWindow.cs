@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Media;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Blackjack
@@ -102,9 +97,16 @@ namespace Blackjack
         private void Form1_Load(object sender, EventArgs e)
         {
             winnerBanner.Hide();
+            drawPanel.Hide();
             looseBanner.Hide();
+            LoadSettings();
         }
 
+        private void LoadSettings()
+        {
+            dealerCountLabel.Visible = Properties.Settings.Default.showScore;
+            playerCountLabel.Visible = Properties.Settings.Default.showScore;
+        }
         private void hitButton_Click(object sender, EventArgs e)
         {
             playerHit();
@@ -258,7 +260,13 @@ namespace Blackjack
             //first see if player is bust
             hitButton.Enabled = false;
             standButton.Enabled = false;
-            if(playerhand <= 21 && (dealerhand > 21 || playerhand > dealerhand))
+            if(playerhand <= 21 && playerhand == dealerhand)
+            {
+                playSound(Properties.Resources.Ta_Da_SoundBible_com_1884170640);
+                drawPanel.Show();
+                bannerTimer.Start();
+            }
+            else if(playerhand <= 21 && (dealerhand > 21 || playerhand > dealerhand))
             {
                 playSound(Properties.Resources.Ta_Da_SoundBible_com_1884170640);
                 winnerBanner.Show();                
@@ -298,6 +306,7 @@ namespace Blackjack
         {
             winnerBanner.Hide();
             looseBanner.Hide();
+            drawPanel.Hide();
             bannerTimer.Stop();
             ResetGame();
         }
@@ -326,7 +335,16 @@ namespace Blackjack
             {
                 standButton.PerformClick();
             }
-            MessageBox.Show("Test");
+            else if (e.KeyCode == Keys.N)
+            {
+                dealButton.PerformClick();
+            }
+        }
+
+        private void settingsButton_Click(object sender, EventArgs e)
+        {
+            new SettingsWindow().ShowDialog();
+            LoadSettings();
         }
     }
 }

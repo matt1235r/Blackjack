@@ -49,10 +49,15 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.muteButton = new System.Windows.Forms.PictureBox();
             this.deckSizeLabel = new System.Windows.Forms.Label();
+            this.settingsButton = new System.Windows.Forms.PictureBox();
+            this.drawPanel = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
             this.winnerBanner.SuspendLayout();
             this.looseBanner.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.muteButton)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.settingsButton)).BeginInit();
+            this.drawPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // dealerLayoutPanel
@@ -301,6 +306,8 @@
             this.panel1.BackColor = System.Drawing.Color.DimGray;
             this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.drawPanel);
+            this.panel1.Controls.Add(this.settingsButton);
             this.panel1.Controls.Add(this.muteButton);
             this.panel1.Controls.Add(this.deckSizeLabel);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -339,7 +346,48 @@
             this.deckSizeLabel.Text = "52";
             this.deckSizeLabel.Click += new System.EventHandler(this.deckSizeLabel_Click);
             // 
-            // Form1
+            // settingsButton
+            // 
+            this.settingsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.settingsButton.BackColor = System.Drawing.Color.Transparent;
+            this.settingsButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("settingsButton.BackgroundImage")));
+            this.settingsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.settingsButton.Location = new System.Drawing.Point(1100, 20);
+            this.settingsButton.Margin = new System.Windows.Forms.Padding(4);
+            this.settingsButton.Name = "settingsButton";
+            this.settingsButton.Size = new System.Drawing.Size(59, 53);
+            this.settingsButton.TabIndex = 15;
+            this.settingsButton.TabStop = false;
+            this.settingsButton.Tag = "0";
+            this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
+            // 
+            // drawPanel
+            // 
+            this.drawPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.drawPanel.BackColor = System.Drawing.Color.MediumPurple;
+            this.drawPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.drawPanel.Controls.Add(this.label5);
+            this.drawPanel.Location = new System.Drawing.Point(247, 8);
+            this.drawPanel.Margin = new System.Windows.Forms.Padding(4);
+            this.drawPanel.Name = "drawPanel";
+            this.drawPanel.Size = new System.Drawing.Size(710, 54);
+            this.drawPanel.TabIndex = 13;
+            // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.Location = new System.Drawing.Point(290, 1);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(126, 52);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Push";
+            // 
+            // GameWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
@@ -360,8 +408,9 @@
             this.Controls.Add(this.dealerLayoutPanel);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "Form1";
+            this.Name = "GameWindow";
             this.Text = "Blackjack";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
@@ -372,6 +421,9 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.muteButton)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.settingsButton)).EndInit();
+            this.drawPanel.ResumeLayout(false);
+            this.drawPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -398,6 +450,9 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox muteButton;
+        private System.Windows.Forms.PictureBox settingsButton;
+        private System.Windows.Forms.Panel drawPanel;
+        private System.Windows.Forms.Label label5;
     }
 }
 

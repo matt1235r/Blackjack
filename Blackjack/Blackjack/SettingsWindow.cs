@@ -16,5 +16,26 @@ namespace Blackjack
         {
             InitializeComponent();
         }
+
+        private void SettingsWindow_Load(object sender, EventArgs e)
+        {
+            LoadSettings();
+        }
+
+        private void LoadSettings()
+        {
+            showLabelsBox.Checked = Properties.Settings.Default.showScore;
+        }
+
+        private void SaveSettings()
+        {
+            Properties.Settings.Default.showScore = showLabelsBox.Checked;
+        }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            SaveSettings();
+            this.Close();
+        }
     }
 }
