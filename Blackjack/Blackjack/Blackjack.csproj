@@ -93,6 +93,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Short Dial Tone-SoundBible.com-1911037576.wav" />
     <None Include="Resources\unmute.png" />
     <None Include="Resources\mute.png" />
     <None Include="Resources\Ta Da-SoundBible.com-1884170640.wav" />

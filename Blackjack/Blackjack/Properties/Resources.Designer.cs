@@ -91,6 +91,15 @@ namespace Blackjack.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Short_Dial_Tone_SoundBible_com_1911037576 {
+            get {
+                return ResourceManager.GetStream("Short_Dial_Tone_SoundBible_com_1911037576", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
         internal static System.IO.UnmanagedMemoryStream shuffling_cards_1 {
             get {
                 return ResourceManager.GetStream("shuffling_cards_1", resourceCulture);

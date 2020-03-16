@@ -190,8 +190,8 @@ namespace Blackjack
             dealerCountLabel.Text = "0";
 
 
-            dealerLayoutPanel.Controls.Add(getNewCard(true));
-            dealerLayoutPanel.Controls.Add(getNewCard());
+            getNewCard(dealerLayoutPanel, true);
+            getNewCard(dealerLayoutPanel);
 
             playerHit();
             playerHit();
@@ -206,25 +206,24 @@ namespace Blackjack
 
         private void playerHit()
         {
-            playerLayoutPanel.Controls.Add(getNewCard());
+            getNewCard(playerLayoutPanel);
             
         }
 
         private void dealerTurn()
         {
-            ((PictureBox)dealerLayoutPanel.Controls[0]).Image = null;
+            ((PictureBox)dealerLayoutPanel.Controls[1]).Image = null;
             while (calcDealerValue() <= 17)
             {
-                dealerLayoutPanel.Controls.Add(getNewCard());
+                getNewCard(dealerLayoutPanel);
                 Thread.Sleep(250);
             }
 
             checkWhoWon();
         }
 
-        private PictureBox getNewCard(bool hidden = false)
+        private void getNewCard(PictureBox parentControl, bool hidden = false)
         {
-
             int randomIndex = random.Next(0, Deck.Count - 1);
 
             Card card = Deck[randomIndex];
@@ -236,11 +235,23 @@ namespace Blackjack
 
             cardHolder.Tag = card.Value;
             cardHolder.BackgroundImage = cardImageList.Images[cardImageList.Images.IndexOfKey(card.ImageName)];
+            cardHolder.Anchor = ( AnchorStyles.Bottom | AnchorStyles.Top  | AnchorStyles.Right  | AnchorStyles.Left);
+            cardHolder.BackgroundImageLayout = ImageLayout.Stretch;
 
             Deck.RemoveAt(randomIndex);
             deckSizeLabel.Text = Deck.Count.ToString();
             playSound(Properties.Resources.cardSlide6);
-            return cardHolder;
+            
+
+            int cord = parentControl.Controls.Count * 20;
+            if (parentControl.Controls.Count > 0)
+            {
+                cardHolder.Location = new Point((parentControl.Controls[parentControl.Controls.Count - 1].Location.X) + cord, cardHolder.Location.Y);
+
+            }
+
+            parentControl.Controls.Add(cardHolder);
+            cardHolder.BringToFront();
         }
 
         private void playSound(System.IO.UnmanagedMemoryStream path)
@@ -262,7 +273,7 @@ namespace Blackjack
             standButton.Enabled = false;
             if(playerhand <= 21 && playerhand == dealerhand)
             {
-                playSound(Properties.Resources.Ta_Da_SoundBible_com_1884170640);
+                playSound(Properties.Resources.Short_Dial_Tone_SoundBible_com_1911037576);
                 drawPanel.Show();
                 bannerTimer.Start();
             }
@@ -345,6 +356,25 @@ namespace Blackjack
         {
             new SettingsWindow().ShowDialog();
             LoadSettings();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            getNewCard(playerLayoutPanel);
+        }
+
+        private void GameWindow_MouseMove(object sender, MouseEventArgs e)
+        {
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
