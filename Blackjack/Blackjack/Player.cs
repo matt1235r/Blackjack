@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace Blackjack
 {
@@ -29,7 +30,7 @@ namespace Blackjack
 
         private void Player_Load(object sender, EventArgs e)
         {
-            DeckClass.currentDeck = DeckClass.allCards;
+            scoreBanner.Hide();
         }
 
         public void EndTurn()
@@ -37,16 +38,29 @@ namespace Blackjack
             hitButton.Hide();
             standButton.Hide();
             playerTurn = false;
-            window.TurnCompleted(21);
+            window.TurnCompleted();
         }
 
         public void StartTurn()
         {
+            scoreBanner.Hide();
+            playerLayoutPanel.Controls.Clear();
             hitButton.Show();
             standButton.Show();
             playerTurn = true;
 
+            hitButton.PerformClick();
+            hitButton.PerformClick();
+
+            while (Convert.ToInt32(playerCountLabel.Text) >= 17)
+            {
+
+                hitButton.PerformClick();
+            }
+            EndTurn();
+
         }
+
 
         public bool IsTurn()
         {
@@ -58,7 +72,7 @@ namespace Blackjack
             DeckClass.getNewCard(playerLayoutPanel, false);
         }
 
-        private int calcPlayerValue()
+        public int calcPlayerValue()
         {
             int count = 0;
             foreach (Control c in playerLayoutPanel.Controls)
@@ -97,6 +111,27 @@ namespace Blackjack
         private void standButton_Click(object sender, EventArgs e)
         {
             EndTurn();
+        }
+
+        public void roundEnd(int result)
+        {
+            if(result == -1)
+            {
+                scoreBanner.BackColor = Color.IndianRed;
+                resultLabel.Text = "Player Lost";
+
+            }
+            else if (result == 0)
+            {
+                scoreBanner.BackColor = Color.MediumPurple;
+                resultLabel.Text = "Player Tied";
+            }
+            else if (result == 1)
+            {
+                scoreBanner.BackColor = Color.Green;
+                resultLabel.Text = "Player Won";
+            }
+            scoreBanner.Show();
         }
     }
 }

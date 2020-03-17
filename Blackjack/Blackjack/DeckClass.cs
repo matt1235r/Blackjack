@@ -90,12 +90,13 @@ namespace Blackjack
         public static Random random = new Random();
 
         public static ImageList cardImageList = new ImageList();
-        
+
+        public static Point[] playercords = new Point[] { new Point { X = 46, Y = 21 }, new Point { X = 221, Y = 67 }, new Point { X = 410, Y = 81 }, new Point { X = 594, Y = 67 } } ;
 
 
         public static void getNewCard(PictureBox parentControl, bool hidden = false)
         {
-            int randomIndex = random.Next(0, currentDeck.Count - 1);
+                int randomIndex = random.Next(0, currentDeck.Count - 1);
 
             Card card = currentDeck[randomIndex];
 
@@ -108,7 +109,7 @@ namespace Blackjack
             cardHolder.BackgroundImage = Image.FromFile("Cards/" + card.ImageName);
             cardHolder.Anchor = (AnchorStyles.Bottom | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left);
             cardHolder.BackgroundImageLayout = ImageLayout.Stretch;
-            cardHolder.BackgroundImageLayout = ImageLayout.Stretch;
+            cardHolder.SizeMode = PictureBoxSizeMode.StretchImage;
 
             currentDeck.RemoveAt(randomIndex);
 

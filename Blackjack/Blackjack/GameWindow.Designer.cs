@@ -325,9 +325,9 @@
             // playerContainer
             // 
             this.playerContainer.BackColor = System.Drawing.Color.Transparent;
-            this.playerContainer.Location = new System.Drawing.Point(22, 202);
+            this.playerContainer.Location = new System.Drawing.Point(22, 176);
             this.playerContainer.Name = "playerContainer";
-            this.playerContainer.Size = new System.Drawing.Size(949, 309);
+            this.playerContainer.Size = new System.Drawing.Size(949, 335);
             this.playerContainer.TabIndex = 25;
             // 
             // GameWindow
@@ -338,7 +338,6 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1023, 574);
-            this.Controls.Add(this.playerContainer);
             this.Controls.Add(this.dealerCountLabel);
             this.Controls.Add(this.drawPanel);
             this.Controls.Add(this.dealerLayoutPanel);
@@ -348,10 +347,10 @@
             this.Controls.Add(this.hitButton);
             this.Controls.Add(this.standButton);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.playerContainer);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
-            this.MaximizeBox = false;
             this.Name = "GameWindow";
             this.Text = "Blackjack";
             this.Load += new System.EventHandler(this.Form1_Load);

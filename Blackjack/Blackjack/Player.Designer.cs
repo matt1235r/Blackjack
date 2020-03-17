@@ -35,7 +35,10 @@
             this.cardImageList = new System.Windows.Forms.ImageList(this.components);
             this.hitButton = new System.Windows.Forms.Button();
             this.standButton = new System.Windows.Forms.Button();
+            this.scoreBanner = new System.Windows.Forms.Panel();
+            this.resultLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.playerLayoutPanel)).BeginInit();
+            this.scoreBanner.SuspendLayout();
             this.SuspendLayout();
             // 
             // playerCountLabel
@@ -124,37 +127,64 @@
             // 
             // hitButton
             // 
+            this.hitButton.BackColor = System.Drawing.Color.YellowGreen;
+            this.hitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.hitButton.Location = new System.Drawing.Point(2, 145);
             this.hitButton.Name = "hitButton";
             this.hitButton.Size = new System.Drawing.Size(75, 23);
             this.hitButton.TabIndex = 19;
             this.hitButton.Text = "Hit";
-            this.hitButton.UseVisualStyleBackColor = true;
+            this.hitButton.UseVisualStyleBackColor = false;
             this.hitButton.Click += new System.EventHandler(this.hitButton_Click);
             // 
             // standButton
             // 
+            this.standButton.BackColor = System.Drawing.Color.YellowGreen;
+            this.standButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.standButton.Location = new System.Drawing.Point(97, 145);
             this.standButton.Name = "standButton";
             this.standButton.Size = new System.Drawing.Size(75, 23);
             this.standButton.TabIndex = 20;
             this.standButton.Text = "Stand";
-            this.standButton.UseVisualStyleBackColor = true;
+            this.standButton.UseVisualStyleBackColor = false;
             this.standButton.Click += new System.EventHandler(this.standButton_Click);
+            // 
+            // scoreBanner
+            // 
+            this.scoreBanner.BackColor = System.Drawing.Color.ForestGreen;
+            this.scoreBanner.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.scoreBanner.Controls.Add(this.resultLabel);
+            this.scoreBanner.Location = new System.Drawing.Point(3, 145);
+            this.scoreBanner.Name = "scoreBanner";
+            this.scoreBanner.Size = new System.Drawing.Size(170, 23);
+            this.scoreBanner.TabIndex = 21;
+            // 
+            // resultLabel
+            // 
+            this.resultLabel.AutoSize = true;
+            this.resultLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.resultLabel.Location = new System.Drawing.Point(39, 2);
+            this.resultLabel.Name = "resultLabel";
+            this.resultLabel.Size = new System.Drawing.Size(88, 16);
+            this.resultLabel.TabIndex = 22;
+            this.resultLabel.Text = "Player Won";
             // 
             // Player
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Black;
+            this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.standButton);
             this.Controls.Add(this.hitButton);
             this.Controls.Add(this.playerLayoutPanel);
             this.Controls.Add(this.playerCountLabel);
+            this.Controls.Add(this.scoreBanner);
             this.Name = "Player";
             this.Size = new System.Drawing.Size(172, 224);
             this.Load += new System.EventHandler(this.Player_Load);
             ((System.ComponentModel.ISupportInitialize)(this.playerLayoutPanel)).EndInit();
+            this.scoreBanner.ResumeLayout(false);
+            this.scoreBanner.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -167,5 +197,7 @@
         private System.Windows.Forms.ImageList cardImageList;
         private System.Windows.Forms.Button hitButton;
         private System.Windows.Forms.Button standButton;
+        private System.Windows.Forms.Panel scoreBanner;
+        private System.Windows.Forms.Label resultLabel;
     }
 }
