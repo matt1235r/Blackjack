@@ -96,7 +96,7 @@ namespace Blackjack
 
         public static void getNewCard(PictureBox parentControl, bool hidden = false)
         {
-                int randomIndex = random.Next(0, currentDeck.Count - 1);
+            int randomIndex = random.Next(0, currentDeck.Count - 1);
 
             Card card = currentDeck[randomIndex];
 
