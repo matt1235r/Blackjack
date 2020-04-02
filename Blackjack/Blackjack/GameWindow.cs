@@ -10,84 +10,6 @@ namespace Blackjack
     public partial class GameWindow : Form
     {
 
-        List<Card> fullDeck = new List<Card>()
-            {
-                #region spades
-
-                new Card() { Value  = 2, LongName = "Two Spades", ImageName = "2S.PNG" },
-                new Card() { Value = 3, LongName = "Three Spades", ImageName = "3S.PNG" },
-                new Card() { Value = 4, LongName =  "Four Spades", ImageName = "4S.PNG" },
-                new Card() { Value = 5, LongName = "Five Spades", ImageName = "5S.PNG" },
-                new Card() { Value = 6, LongName = "Six Spades", ImageName = "6S.PNG" },
-                new Card() { Value = 7, LongName = "Seven Spades", ImageName = "7S.PNG" },
-                new Card() { Value = 8, LongName = "Eight Spades", ImageName = "8S.PNG" },
-                new Card() { Value = 9, LongName = "Nine Spades", ImageName = "9S.PNG" },
-                new Card() { Value = 10, LongName = "Ten Spades", ImageName = "10S.PNG" },
-                new Card() { Value = 10, LongName = "Jack Spades", ImageName = "JS.PNG" },
-                new Card() { Value = 10, LongName = "Queen Spades", ImageName = "QS.PNG" },
-                new Card(){ Value = 10, LongName = "King Spades", ImageName = "KS.PNG" },
-                new Card(){ Value = 11, LongName = "Ace Spades", ImageName = "AS.PNG" },
-
-                #endregion
-
-                #region diamonds
-
-                new Card() { Value  = 2, LongName = "Two Diamonds", ImageName = "2D.PNG" },
-                new Card() { Value = 3, LongName = "Three Diamonds", ImageName = "3D.PNG" },
-                new Card() { Value = 4, LongName =  "Four Diamonds", ImageName = "4D.PNG" },
-                new Card() { Value = 5, LongName = "Five Diamonds", ImageName = "5D.PNG" },
-                new Card() { Value = 6, LongName = "Six Diamonds", ImageName = "6D.PNG" },
-                new Card(){ Value = 7, LongName = "Seven Diamonds", ImageName = "7D.PNG" },
-                new Card() { Value = 8, LongName = "Eight Diamonds", ImageName = "8D.PNG" },
-                new Card() { Value = 9, LongName = "Nine Diamonds", ImageName = "9D.PNG" },
-                new Card() { Value = 10, LongName = "Ten Diamonds", ImageName = "10D.PNG" },
-                new Card() { Value = 10, LongName = "Jack Diamonds", ImageName = "JD.PNG" },
-                new Card() { Value = 10, LongName = "Queen Diamonds", ImageName = "QD.PNG" },
-                new Card(){ Value = 10, LongName = "King Diamonds", ImageName = "KD.PNG" },
-                new Card(){ Value = 11, LongName = "Ace Diamonds", ImageName = "AD.PNG" },
-
-                #endregion
-
-                #region clubs
-
-                new Card() { Value  = 2, LongName = "Two Clubs", ImageName = "2C.PNG" },
-                new Card() { Value = 3, LongName = "Three Clubs", ImageName = "3C.PNG" },
-                new Card() { Value = 4, LongName =  "Four Clubs", ImageName = "4C.PNG" },
-                new Card() { Value = 5, LongName = "Five Clubs", ImageName = "5C.PNG" },
-                new Card() { Value = 6, LongName = "Six Clubs", ImageName = "6C.PNG" },
-                new Card(){ Value = 7, LongName = "Seven Clubs", ImageName = "7C.PNG" },
-                new Card() { Value = 8, LongName = "Eight Clubs", ImageName = "8C.PNG" },
-                new Card() { Value = 9, LongName = "Nine Clubs", ImageName= "9C.PNG" },
-                new Card() { Value = 10, LongName = "Ten Clubs", ImageName = "10C.PNG" },
-                new Card() { Value = 10, LongName = "Jack Clubs", ImageName = "JC.PNG" },
-                new Card() { Value = 10, LongName = "Queen Clubs", ImageName = "QC.PNG" },
-                new Card(){ Value = 10, LongName = "King Clubs", ImageName = "KC.PNG" },
-                new Card(){ Value = 11, LongName = "Ace Clubs", ImageName = "AC.PNG" },
-
-                #endregion
-
-                #region hearts
-
-                new Card() { Value  = 2, LongName = "Two Hearts", ImageName = "2H.PNG" },
-                new Card() { Value = 3, LongName = "Three Hearts", ImageName = "3H.PNG" },
-                new Card() { Value = 4, LongName =  "Four Hearts", ImageName = "4H.PNG" },
-                new Card() { Value = 5, LongName = "Five Hearts", ImageName = "5H.PNG" },
-                new Card() { Value = 6, LongName = "Six Hearts", ImageName = "6H.PNG" },
-                new Card(){ Value = 7, LongName = "Seven Hearts", ImageName = "7H.PNG" },
-                new Card() { Value = 8, LongName = "Eight Hearts", ImageName = "8H.PNG" },
-                new Card() { Value = 9, LongName = "Nine Hearts", ImageName = "9H.PNG" },
-                new Card() { Value = 10, LongName = "Ten Hearts", ImageName = "10H.PNG" },
-                new Card() { Value = 10, LongName = "Jack Hearts", ImageName = "JH.PNG" },
-                new Card() { Value = 10, LongName = "Queen Hearts", ImageName = "QH.PNG" },
-                new Card(){ Value = 10, LongName = "King Hearts", ImageName = "KH.PNG" },
-                new Card(){ Value = 11, LongName = "Ace Hearts", ImageName = "AH.PNG" }
-
-                #endregion
-            };
-
-        List<Card> Deck = new List<Card>();
-
-        Random random = new Random();
 
         public GameWindow()
         {
@@ -100,49 +22,16 @@ namespace Blackjack
             drawPanel.Hide();
             looseBanner.Hide();
             LoadSettings();
+
+            
         }
 
         private void LoadSettings()
         {
             dealerCountLabel.Visible = Properties.Settings.Default.showScore;
-            playerCountLabel.Visible = Properties.Settings.Default.showScore;
+            //playerCountLabel.Visible = Properties.Settings.Default.showScore;
         }
-        private void hitButton_Click(object sender, EventArgs e)
-        {
-            playerHit();
-            calcPlayerValue();
-
-        }
-
-        private int calcPlayerValue()
-        {
-            int count = 0;
-            foreach (Control c in playerLayoutPanel.Controls)
-            {
-                count = count + Convert.ToInt16(c.Tag);
-                
-            }
-
-            //some simple ace logic
-            if(count > 21)
-            {
-                foreach (Control c in playerLayoutPanel.Controls)
-                {
-                    if(Convert.ToInt16(c.Tag) == 11)
-                    {
-                        count -= 10;
-                        if (count <= 21)
-                        {
-                            break;
-                        }
-                    }                    
-
-                }
-            }
-
-            playerCountLabel.Text = count.ToString();
-            return count;
-        }
+        
 
         private int calcDealerValue()
         {
@@ -177,82 +66,59 @@ namespace Blackjack
             return count;
         }
 
+
         private void ResetGame()
         {
-            Deck.Clear();
-            Deck = new List<Card>(fullDeck);
-            deckSizeLabel.Text = Deck.Count.ToString();
+            //DeckClass.currentDeck.Clear();
+
+            DeckClass.currentDeck = new List<Card>(DeckClass.allCards);
+            deckSizeLabel.Text = DeckClass.currentDeck.Count.ToString();
             
-            playerLayoutPanel.Controls.Clear();
             dealerLayoutPanel.Controls.Clear();
 
-            playerCountLabel.Text = "0";
             dealerCountLabel.Text = "0";
 
 
-            getNewCard(dealerLayoutPanel, true);
-            getNewCard(dealerLayoutPanel);
+            DeckClass.getNewCard(dealerLayoutPanel, true);
+            DeckClass.getNewCard(dealerLayoutPanel);
+
 
             playerHit();
-            playerHit();
-
             calcDealerValue();
-            calcPlayerValue();
 
             hitButton.Enabled = true;
             standButton.Enabled = true;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// 
 
         private void playerHit()
         {
-            getNewCard(playerLayoutPanel);
-            
+            foreach(Control c in playerContainer.Controls)
+            {
+                if(c.GetType() == typeof(Player))
+                {
+                    ((Player)c).StartTurn();
+                }
+            }
         }
 
+   
         private void dealerTurn()
         {
             ((PictureBox)dealerLayoutPanel.Controls[1]).Image = null;
             while (calcDealerValue() <= 17)
             {
-                getNewCard(dealerLayoutPanel);
-                Thread.Sleep(250);
+                DeckClass.getNewCard(dealerLayoutPanel);
+                
             }
 
             checkWhoWon();
         }
-
-        private void getNewCard(PictureBox parentControl, bool hidden = false)
-        {
-            int randomIndex = random.Next(0, Deck.Count - 1);
-
-            Card card = Deck[randomIndex];
-
-            PictureBox cardHolder = new PictureBox();
-            cardHolder.Size = new Size(100, 140);
-
-            if (hidden) { cardHolder.Image = cardImageList.Images[cardImageList.Images.IndexOfKey("blue_back.png")]; }
-
-            cardHolder.Tag = card.Value;
-            cardHolder.BackgroundImage = cardImageList.Images[cardImageList.Images.IndexOfKey(card.ImageName)];
-            cardHolder.Anchor = ( AnchorStyles.Bottom | AnchorStyles.Top  | AnchorStyles.Right  | AnchorStyles.Left);
-            cardHolder.BackgroundImageLayout = ImageLayout.Stretch;
-
-            Deck.RemoveAt(randomIndex);
-            deckSizeLabel.Text = Deck.Count.ToString();
-            playSound(Properties.Resources.cardSlide6);
-            
-
-            int cord = parentControl.Controls.Count * 20;
-            if (parentControl.Controls.Count > 0)
-            {
-                cardHolder.Location = new Point((parentControl.Controls[parentControl.Controls.Count - 1].Location.X) + cord, cardHolder.Location.Y);
-
-            }
-
-            parentControl.Controls.Add(cardHolder);
-            cardHolder.BringToFront();
-        }
+        
 
         private void playSound(System.IO.UnmanagedMemoryStream path)
         {
@@ -265,31 +131,33 @@ namespace Blackjack
 
         private void checkWhoWon()
         {
-            int playerhand = calcPlayerValue();
-            int dealerhand = calcDealerValue();
-
-            //first see if player is bust
-            hitButton.Enabled = false;
-            standButton.Enabled = false;
-            if(playerhand <= 21 && playerhand == dealerhand)
+            foreach(Control c in playerContainer.Controls)
             {
-                playSound(Properties.Resources.Short_Dial_Tone_SoundBible_com_1911037576);
-                drawPanel.Show();
-                bannerTimer.Start();
+                Player currentplayer = ((Player)c);
+                //int playerhand = calcPlayerValue();
+                int dealerhand = calcDealerValue();
+                int playerhand = currentplayer.calcPlayerValue();
+                //first see if player is bust
+                hitButton.Enabled = false;
+                standButton.Enabled = false;
+                if (playerhand <= 21 && playerhand == dealerhand)
+                {
+                    playSound(Properties.Resources.Short_Dial_Tone_SoundBible_com_1911037576);
+                    currentplayer.roundEnd(0);
+                }
+                else if (playerhand <= 21 && (dealerhand > 21 || playerhand > dealerhand))
+                {
+                    playSound(Properties.Resources.Ta_Da_SoundBible_com_1884170640);
+                    currentplayer.roundEnd(1);
+                }
+                else
+                {
+                    playSound(Properties.Resources.CD_Skipping_SoundBible_com_816257683);
+                    currentplayer.roundEnd(-1);
+                }
             }
-            else if(playerhand <= 21 && (dealerhand > 21 || playerhand > dealerhand))
-            {
-                playSound(Properties.Resources.Ta_Da_SoundBible_com_1884170640);
-                winnerBanner.Show();                
-                bannerTimer.Start();
-            }
-            else
-            {
-                playSound(Properties.Resources.CD_Skipping_SoundBible_com_816257683);
-                looseBanner.Show();
-                bannerTimer.Start();
-            }
-
+            bannerTimer.Start();
+            
         }
 
         private void dealButton_Click(object sender, EventArgs e)
@@ -300,7 +168,12 @@ namespace Blackjack
 
         private void standButton_Click(object sender, EventArgs e)
         {
-            dealerTurn();
+            Player player = new Player(this);
+            player.Location = new Point(52, 18);
+
+            playerContainer.Controls.Add(player);
+
+            ResetGame();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -315,11 +188,9 @@ namespace Blackjack
 
         private void bannerTimer_Tick(object sender, EventArgs e)
         {
-            winnerBanner.Hide();
-            looseBanner.Hide();
-            drawPanel.Hide();
-            bannerTimer.Stop();
             ResetGame();
+            MessageBox.Show("Test");
+            bannerTimer.Stop();
         }
 
         private void muteButton_MouseDown(object sender, MouseEventArgs e)
@@ -358,11 +229,20 @@ namespace Blackjack
             LoadSettings();
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        public void TurnCompleted()
         {
-            getNewCard(playerLayoutPanel);
-        }
+            int playersleft = playerContainer.Controls.Count;
+            foreach(Control c in playerContainer.Controls)
+            {
+                if (((Player)c).IsTurn() == false) { playersleft--; }
+            }
 
+            if(playersleft == 0)
+            {
+                dealerTurn();
+            }
+            
+        }
         private void GameWindow_MouseMove(object sender, MouseEventArgs e)
         {
         }
@@ -374,6 +254,18 @@ namespace Blackjack
 
         private void label3_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void hitButton_Click(object sender, EventArgs e)
+        {
+            Player player = new Player(this);
+            player.Location = DeckClass.playercords[playerContainer.Controls.Count];
+
+            playerContainer.Controls.Add(player);
+            
+
+            ResetGame();
 
         }
     }
