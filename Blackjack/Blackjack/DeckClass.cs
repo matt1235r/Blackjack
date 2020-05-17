@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -91,11 +92,41 @@ namespace Blackjack
 
         public static ImageList cardImageList = new ImageList();
 
-        public static Point[] playercords = new Point[] { new Point { X = 46, Y = 21 }, new Point { X = 221, Y = 67 }, new Point { X = 410, Y = 81 }, new Point { X = 594, Y = 67 } } ;
+        public static Point[] playercords = new Point[] { new Point { X = 410, Y = 81 }, new Point { X = 771, Y = 24 }, new Point { X = 46, Y = 21 }, new Point { X = 221, Y = 67 }, new Point { X = 594, Y = 67 }};
 
+
+        public static void playSound(System.IO.UnmanagedMemoryStream path)
+        {
+            System.IO.Stream str = path;
+            SoundPlayer snd = new SoundPlayer(str);
+
+            if (!Properties.Settings.Default.gameMuted) { snd.Play(); }
+
+        }
+
+        public static void wait(int milliseconds)
+        {
+            System.Windows.Forms.Timer timer1 = new System.Windows.Forms.Timer();
+            if (milliseconds == 0 || milliseconds < 0) return;
+            //Console.WriteLine("start wait timer");
+            timer1.Interval = milliseconds;
+            timer1.Enabled = true;
+            timer1.Start();
+            timer1.Tick += (s, e) =>
+            {
+                timer1.Enabled = false;
+                timer1.Stop();
+                //Console.WriteLine("stop wait timer");
+            };
+            while (timer1.Enabled)
+            {
+                Application.DoEvents();
+            }
+        }
 
         public static void getNewCard(PictureBox parentControl, bool hidden = false)
         {
+            playSound(Properties.Resources.cardSlide6);
             int randomIndex = random.Next(0, currentDeck.Count - 1);
 
             Card card = currentDeck[randomIndex];
@@ -126,4 +157,5 @@ namespace Blackjack
             cardHolder.BringToFront();
         }
     }
+
 }

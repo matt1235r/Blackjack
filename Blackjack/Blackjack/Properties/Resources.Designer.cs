@@ -81,9 +81,38 @@ namespace Blackjack.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap cpu_icon_symbol_sign_vector {
+            get {
+                object obj = ResourceManager.GetObject("cpu_icon_symbol_sign_vector", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Lightsaber_Turn_Off_SoundBible_com_726724693 {
+            get {
+                return ResourceManager.GetStream("Lightsaber_Turn_Off_SoundBible_com_726724693", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap mute {
             get {
                 object obj = ResourceManager.GetObject("mute", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap person_icon {
+            get {
+                object obj = ResourceManager.GetObject("person_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,6 +132,15 @@ namespace Blackjack.Properties {
         internal static System.IO.UnmanagedMemoryStream shuffling_cards_1 {
             get {
                 return ResourceManager.GetStream("shuffling_cards_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to https://www.google.com/url?sa=i&amp;url=https%3A%2F%2Fwww.bluecubestudios.co.uk%2Fneed-a-property-cgi%2Fperson-icon%2F&amp;psig=AOvVaw1hCjQutnmDpsfKIqFCQU9e&amp;ust=1589385359019000&amp;source=images&amp;cd=vfe&amp;ved=0CAIQjRxqFwoTCJD4yoTYrukCFQAAAAAdAAAAABAJ.
+        /// </summary>
+        internal static string String {
+            get {
+                return ResourceManager.GetString("String", resourceCulture);
             }
         }
         

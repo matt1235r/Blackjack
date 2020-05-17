@@ -56,6 +56,12 @@
     <Compile Include="GameWindow.Designer.cs">
       <DependentUpon>GameWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="Help.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Help.Designer.cs">
+      <DependentUpon>Help.cs</DependentUpon>
+    </Compile>
     <Compile Include="Player.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -70,8 +76,12 @@
     <Compile Include="SettingsWindow.Designer.cs">
       <DependentUpon>SettingsWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="SF.cs" />
     <EmbeddedResource Include="GameWindow.resx">
       <DependentUpon>GameWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Help.resx">
+      <DependentUpon>Help.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Player.resx">
       <DependentUpon>Player.cs</DependentUpon>
@@ -103,6 +113,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\person-icon.png" />
+    <None Include="Resources\cpu-icon-symbol-sign-vector.jpg" />
+    <None Include="Resources\Lightsaber Turn Off-SoundBible.com-726724693.wav" />
     <None Include="Resources\Short Dial Tone-SoundBible.com-1911037576.wav" />
     <None Include="Resources\unmute.png" />
     <None Include="Resources\mute.png" />

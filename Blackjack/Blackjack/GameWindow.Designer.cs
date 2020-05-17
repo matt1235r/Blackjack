@@ -30,62 +30,55 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameWindow));
-            this.standButton = new System.Windows.Forms.Button();
-            this.hitButton = new System.Windows.Forms.Button();
+            this.removePlayer = new System.Windows.Forms.Button();
+            this.newPlayer = new System.Windows.Forms.Button();
             this.miscImageList = new System.Windows.Forms.ImageList(this.components);
             this.dealButton = new System.Windows.Forms.Button();
             this.dealerCountLabel = new System.Windows.Forms.Label();
             this.cardImageList = new System.Windows.Forms.ImageList(this.components);
-            this.winnerBanner = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
             this.bannerTimer = new System.Windows.Forms.Timer(this.components);
-            this.looseBanner = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.helpButton = new System.Windows.Forms.PictureBox();
             this.settingsButton = new System.Windows.Forms.PictureBox();
             this.muteButton = new System.Windows.Forms.PictureBox();
             this.deckSizeLabel = new System.Windows.Forms.Label();
-            this.drawPanel = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
             this.dealerLayoutPanel = new System.Windows.Forms.PictureBox();
             this.playerContainer = new System.Windows.Forms.Panel();
-            this.winnerBanner.SuspendLayout();
-            this.looseBanner.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.helpButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.settingsButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.muteButton)).BeginInit();
-            this.drawPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dealerLayoutPanel)).BeginInit();
             this.SuspendLayout();
             // 
-            // standButton
+            // removePlayer
             // 
-            this.standButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.standButton.BackColor = System.Drawing.Color.YellowGreen;
-            this.standButton.Enabled = false;
-            this.standButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.standButton.Location = new System.Drawing.Point(526, 532);
-            this.standButton.Name = "standButton";
-            this.standButton.Size = new System.Drawing.Size(244, 35);
-            this.standButton.TabIndex = 2;
-            this.standButton.Text = "Stand";
-            this.standButton.UseVisualStyleBackColor = false;
-            this.standButton.Click += new System.EventHandler(this.standButton_Click);
+            this.removePlayer.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.removePlayer.BackColor = System.Drawing.Color.IndianRed;
+            this.removePlayer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.removePlayer.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.removePlayer.Location = new System.Drawing.Point(526, 532);
+            this.removePlayer.Name = "removePlayer";
+            this.removePlayer.Size = new System.Drawing.Size(244, 35);
+            this.removePlayer.TabIndex = 2;
+            this.removePlayer.Text = "Remove Player";
+            this.removePlayer.UseVisualStyleBackColor = false;
+            this.removePlayer.Click += new System.EventHandler(this.removePlayer_Click);
             // 
-            // hitButton
+            // newPlayer
             // 
-            this.hitButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.hitButton.BackColor = System.Drawing.Color.YellowGreen;
-            this.hitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.hitButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.hitButton.ImageList = this.miscImageList;
-            this.hitButton.Location = new System.Drawing.Point(295, 532);
-            this.hitButton.Name = "hitButton";
-            this.hitButton.Size = new System.Drawing.Size(223, 35);
-            this.hitButton.TabIndex = 3;
-            this.hitButton.Text = "Hit";
-            this.hitButton.UseVisualStyleBackColor = false;
-            this.hitButton.Click += new System.EventHandler(this.hitButton_Click);
+            this.newPlayer.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.newPlayer.BackColor = System.Drawing.Color.YellowGreen;
+            this.newPlayer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.newPlayer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.newPlayer.ImageList = this.miscImageList;
+            this.newPlayer.Location = new System.Drawing.Point(295, 532);
+            this.newPlayer.Name = "newPlayer";
+            this.newPlayer.Size = new System.Drawing.Size(223, 35);
+            this.newPlayer.TabIndex = 3;
+            this.newPlayer.Text = "New Player";
+            this.newPlayer.UseVisualStyleBackColor = false;
+            this.newPlayer.Click += new System.EventHandler(this.newPlayer_Click);
             // 
             // miscImageList
             // 
@@ -96,13 +89,13 @@
             // dealButton
             // 
             this.dealButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.dealButton.BackColor = System.Drawing.Color.YellowGreen;
+            this.dealButton.BackColor = System.Drawing.Color.Peru;
             this.dealButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.dealButton.Location = new System.Drawing.Point(9, 532);
             this.dealButton.Name = "dealButton";
             this.dealButton.Size = new System.Drawing.Size(119, 35);
             this.dealButton.TabIndex = 4;
-            this.dealButton.Text = "New Game";
+            this.dealButton.Text = "Menu";
             this.dealButton.UseVisualStyleBackColor = false;
             this.dealButton.Click += new System.EventHandler(this.dealButton_Click);
             // 
@@ -177,64 +170,17 @@
             this.cardImageList.Images.SetKeyName(51, "QS.png");
             this.cardImageList.Images.SetKeyName(52, "blue_back.png");
             // 
-            // winnerBanner
-            // 
-            this.winnerBanner.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.winnerBanner.BackColor = System.Drawing.Color.LimeGreen;
-            this.winnerBanner.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.winnerBanner.Controls.Add(this.label2);
-            this.winnerBanner.Location = new System.Drawing.Point(198, 472);
-            this.winnerBanner.Name = "winnerBanner";
-            this.winnerBanner.Size = new System.Drawing.Size(660, 44);
-            this.winnerBanner.TabIndex = 12;
-            // 
-            // label2
-            // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(202, 3);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(214, 39);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Player Wins";
-            // 
             // bannerTimer
             // 
             this.bannerTimer.Interval = 2000;
             this.bannerTimer.Tick += new System.EventHandler(this.bannerTimer_Tick);
-            // 
-            // looseBanner
-            // 
-            this.looseBanner.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.looseBanner.BackColor = System.Drawing.Color.Brown;
-            this.looseBanner.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.looseBanner.Controls.Add(this.label4);
-            this.looseBanner.Location = new System.Drawing.Point(198, 472);
-            this.looseBanner.Name = "looseBanner";
-            this.looseBanner.Size = new System.Drawing.Size(660, 44);
-            this.looseBanner.TabIndex = 13;
-            // 
-            // label4
-            // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(216, 3);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(217, 39);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Dealer Wins";
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.DimGray;
             this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.helpButton);
             this.panel1.Controls.Add(this.settingsButton);
             this.panel1.Controls.Add(this.muteButton);
             this.panel1.Controls.Add(this.deckSizeLabel);
@@ -243,6 +189,22 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1023, 54);
             this.panel1.TabIndex = 15;
+            // 
+            // helpButton
+            // 
+            this.helpButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.helpButton.BackColor = System.Drawing.Color.Transparent;
+            this.helpButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("helpButton.BackgroundImage")));
+            this.helpButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.helpButton.Image = ((System.Drawing.Image)(resources.GetObject("helpButton.Image")));
+            this.helpButton.Location = new System.Drawing.Point(864, 6);
+            this.helpButton.Name = "helpButton";
+            this.helpButton.Size = new System.Drawing.Size(47, 42);
+            this.helpButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.helpButton.TabIndex = 16;
+            this.helpButton.TabStop = false;
+            this.helpButton.Tag = "0";
+            this.helpButton.Click += new System.EventHandler(this.helpButton_Click);
             // 
             // settingsButton
             // 
@@ -285,31 +247,6 @@
             this.deckSizeLabel.Size = new System.Drawing.Size(32, 24);
             this.deckSizeLabel.TabIndex = 11;
             this.deckSizeLabel.Text = "52";
-            this.deckSizeLabel.Click += new System.EventHandler(this.deckSizeLabel_Click);
-            // 
-            // drawPanel
-            // 
-            this.drawPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.drawPanel.BackColor = System.Drawing.Color.MediumPurple;
-            this.drawPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.drawPanel.Controls.Add(this.label5);
-            this.drawPanel.Location = new System.Drawing.Point(197, 471);
-            this.drawPanel.Name = "drawPanel";
-            this.drawPanel.Size = new System.Drawing.Size(660, 44);
-            this.drawPanel.TabIndex = 13;
-            // 
-            // label5
-            // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(278, 1);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(100, 39);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Push";
             // 
             // dealerLayoutPanel
             // 
@@ -329,6 +266,7 @@
             this.playerContainer.Name = "playerContainer";
             this.playerContainer.Size = new System.Drawing.Size(949, 335);
             this.playerContainer.TabIndex = 25;
+            this.playerContainer.Paint += new System.Windows.Forms.PaintEventHandler(this.playerContainer_Paint);
             // 
             // GameWindow
             // 
@@ -339,33 +277,24 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1023, 574);
             this.Controls.Add(this.dealerCountLabel);
-            this.Controls.Add(this.drawPanel);
             this.Controls.Add(this.dealerLayoutPanel);
-            this.Controls.Add(this.winnerBanner);
-            this.Controls.Add(this.looseBanner);
             this.Controls.Add(this.dealButton);
-            this.Controls.Add(this.hitButton);
-            this.Controls.Add(this.standButton);
+            this.Controls.Add(this.newPlayer);
+            this.Controls.Add(this.removePlayer);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.playerContainer);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
+            this.MaximizeBox = false;
             this.Name = "GameWindow";
             this.Text = "Blackjack";
-            this.Load += new System.EventHandler(this.Form1_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
-            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.GameWindow_MouseMove);
-            this.winnerBanner.ResumeLayout(false);
-            this.winnerBanner.PerformLayout();
-            this.looseBanner.ResumeLayout(false);
-            this.looseBanner.PerformLayout();
+            this.Load += new System.EventHandler(this.GameWindow_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.helpButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.settingsButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.muteButton)).EndInit();
-            this.drawPanel.ResumeLayout(false);
-            this.drawPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dealerLayoutPanel)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -373,25 +302,20 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button standButton;
-        private System.Windows.Forms.Button hitButton;
+        private System.Windows.Forms.Button removePlayer;
+        private System.Windows.Forms.Button newPlayer;
         private System.Windows.Forms.Button dealButton;
         private System.Windows.Forms.Label dealerCountLabel;
         private System.Windows.Forms.ImageList cardImageList;
         private System.Windows.Forms.ImageList miscImageList;
         private System.Windows.Forms.Label deckSizeLabel;
-        private System.Windows.Forms.Panel winnerBanner;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Timer bannerTimer;
-        private System.Windows.Forms.Panel looseBanner;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox muteButton;
         private System.Windows.Forms.PictureBox settingsButton;
-        private System.Windows.Forms.Panel drawPanel;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PictureBox dealerLayoutPanel;
         private System.Windows.Forms.Panel playerContainer;
+        private System.Windows.Forms.PictureBox helpButton;
     }
 }
 

@@ -16,20 +16,10 @@ namespace Blackjack
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            winnerBanner.Hide();
-            drawPanel.Hide();
-            looseBanner.Hide();
-            LoadSettings();
-
-            
-        }
-
         private void LoadSettings()
         {
             dealerCountLabel.Visible = Properties.Settings.Default.showScore;
-            //playerCountLabel.Visible = Properties.Settings.Default.showScore;
+ 
         }
         
 
@@ -69,7 +59,9 @@ namespace Blackjack
 
         private void ResetGame()
         {
-            //DeckClass.currentDeck.Clear();
+            dealerCountLabel.Visible = Properties.Settings.Default.showScore;
+
+            DeckClass.playSound(Properties.Resources.shuffling_cards_1);
 
             DeckClass.currentDeck = new List<Card>(DeckClass.allCards);
             deckSizeLabel.Text = DeckClass.currentDeck.Count.ToString();
@@ -83,27 +75,16 @@ namespace Blackjack
             DeckClass.getNewCard(dealerLayoutPanel);
 
 
-            playerHit();
-            calcDealerValue();
-
-            hitButton.Enabled = true;
-            standButton.Enabled = true;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// 
-
-        private void playerHit()
-        {
-            foreach(Control c in playerContainer.Controls)
+            foreach (Control c in playerContainer.Controls)
             {
-                if(c.GetType() == typeof(Player))
+                if (c.GetType() == typeof(Player))
                 {
                     ((Player)c).StartTurn();
                 }
             }
+
+            calcDealerValue();
+           
         }
 
    
@@ -120,76 +101,49 @@ namespace Blackjack
         }
         
 
-        private void playSound(System.IO.UnmanagedMemoryStream path)
-        {
-            System.IO.Stream str = path;
-            SoundPlayer snd = new SoundPlayer(str);
-
-            if (muteButton.Tag.ToString() == "0") { snd.Play(); }
-            
-        }
-
+        //will iterate through all player instances to calculate results.
         private void checkWhoWon()
         {
-            foreach(Control c in playerContainer.Controls)
+            for(int i = playerContainer.Controls.Count; i --> 0;)
             {
-                Player currentplayer = ((Player)c);
+                Player currentplayer = (Player)playerContainer.Controls[i];
+                
                 //int playerhand = calcPlayerValue();
                 int dealerhand = calcDealerValue();
                 int playerhand = currentplayer.calcPlayerValue();
+                
                 //first see if player is bust
-                hitButton.Enabled = false;
-                standButton.Enabled = false;
+
                 if (playerhand <= 21 && playerhand == dealerhand)
                 {
-                    playSound(Properties.Resources.Short_Dial_Tone_SoundBible_com_1911037576);
+                    DeckClass.playSound(Properties.Resources.Short_Dial_Tone_SoundBible_com_1911037576);
                     currentplayer.roundEnd(0);
                 }
                 else if (playerhand <= 21 && (dealerhand > 21 || playerhand > dealerhand))
                 {
-                    playSound(Properties.Resources.Ta_Da_SoundBible_com_1884170640);
+                    DeckClass.playSound(Properties.Resources.Ta_Da_SoundBible_com_1884170640);
                     currentplayer.roundEnd(1);
                 }
                 else
                 {
-                    playSound(Properties.Resources.CD_Skipping_SoundBible_com_816257683);
+                    DeckClass.playSound(Properties.Resources.CD_Skipping_SoundBible_com_816257683);
                     currentplayer.roundEnd(-1);
                 }
             }
-            bannerTimer.Start();
-            
+
+            DeckClass.wait(3000);
+            ResetGame();
         }
 
         private void dealButton_Click(object sender, EventArgs e)
         {           
             ResetGame();
-
-        }
-
-        private void standButton_Click(object sender, EventArgs e)
-        {
-            Player player = new Player(this);
-            player.Location = new Point(52, 18);
-
-            playerContainer.Controls.Add(player);
-
-            ResetGame();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
             
-        }
-
-        private void deckSizeLabel_Click(object sender, EventArgs e)
-        {
-
-        }
+        }     
 
         private void bannerTimer_Tick(object sender, EventArgs e)
         {
             ResetGame();
-            MessageBox.Show("Test");
             bannerTimer.Stop();
         }
 
@@ -198,28 +152,14 @@ namespace Blackjack
             if (muteButton.Tag.ToString() == "0")
             {
                 muteButton.BackgroundImage = Properties.Resources.unmute;
+                Properties.Settings.Default.gameMuted = true;
                 muteButton.Tag = 1;
             }
             else
             {
                 muteButton.BackgroundImage = Properties.Resources.mute;
+                Properties.Settings.Default.gameMuted = false;
                 muteButton.Tag = 0;
-            }
-        }
-
-        private void Form1_KeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.KeyCode == Keys.H)
-            {
-                hitButton.PerformClick();
-            }
-            else if (e.KeyCode == Keys.S)
-            {
-                standButton.PerformClick();
-            }
-            else if (e.KeyCode == Keys.N)
-            {
-                dealButton.PerformClick();
             }
         }
 
@@ -231,6 +171,7 @@ namespace Blackjack
 
         public void TurnCompleted()
         {
+            DeckClass.playSound(Properties.Resources.Lightsaber_Turn_Off_SoundBible_com_726724693);
             int playersleft = playerContainer.Controls.Count;
             foreach(Control c in playerContainer.Controls)
             {
@@ -243,29 +184,49 @@ namespace Blackjack
             }
             
         }
-        private void GameWindow_MouseMove(object sender, MouseEventArgs e)
-        {
-        }
 
-        private void label7_Click(object sender, EventArgs e)
+        //adds a new player to the game
+        private void newPlayer_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void hitButton_Click(object sender, EventArgs e)
-        {
             Player player = new Player(this);
             player.Location = DeckClass.playercords[playerContainer.Controls.Count];
 
             playerContainer.Controls.Add(player);
-            
+
 
             ResetGame();
+        }
+
+        //removes the player from the game, but doesnt allow you to delete them all.
+        private void removePlayer_Click(object sender, EventArgs e)
+        {
+            if (playerContainer.Controls.Count != 1)
+            {
+                playerContainer.Controls[playerContainer.Controls.Count - 1].Dispose();
+                ResetGame();
+            }
+       
+        }
+
+        private void GameWindow_Load(object sender, EventArgs e)
+        {
+            Player player = new Player(this, false);
+            player.Location = DeckClass.playercords[playerContainer.Controls.Count];
+
+            playerContainer.Controls.Add(player);
+
+
+            ResetGame();
+        }
+
+        private void helpButton_Click(object sender, EventArgs e)
+        {
+            new Help().ShowDialog();
+        }
+
+        private void playerContainer_Paint(object sender, PaintEventArgs e)
+        {
 
         }
     }

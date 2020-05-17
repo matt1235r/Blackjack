@@ -15,10 +15,13 @@ namespace Blackjack
     {
         GameWindow window;
 
-        public Player(GameWindow parent)
+        bool autoplay;
+
+        public Player(GameWindow parent, bool auto = true)
         {
             InitializeComponent();
             window = parent;
+            autoplay = auto;
         }
 
         public Player()
@@ -31,34 +34,63 @@ namespace Blackjack
         private void Player_Load(object sender, EventArgs e)
         {
             scoreBanner.Hide();
+            AutoPlayCheck();
+        }
+
+        private void AutoPlayCheck()
+        {
+            if (autoplay)
+            {
+                playerLabel.Text = "CPU Player";
+                profileImage.Image = Properties.Resources.cpu_icon_symbol_sign_vector;
+            }
+            else
+            {
+                playerLabel.Text = "Player";
+                profileImage.Image = Properties.Resources.person_icon;
+            }
         }
 
         public void EndTurn()
         {
             hitButton.Hide();
             standButton.Hide();
+            playerCountLabel.ForeColor = Color.Black;
+            playerCountLabel.BackColor = Color.Gray;
             playerTurn = false;
             window.TurnCompleted();
         }
 
         public void StartTurn()
         {
+            AutoPlayCheck();
+            playerCountLabel.Visible = Properties.Settings.Default.showScore;
             scoreBanner.Hide();
             playerLayoutPanel.Controls.Clear();
             hitButton.Show();
             standButton.Show();
+            playerCountLabel.ForeColor = Color.White;
+            playerCountLabel.BackColor = Color.LightSeaGreen;
             playerTurn = true;
 
             hitButton.PerformClick();
             hitButton.PerformClick();
 
-            while (Convert.ToInt32(playerCountLabel.Text) >= 17)
+
+            if (autoplay)
             {
-
-                hitButton.PerformClick();
+                while (IsTurn())
+                {
+                    if(calcPlayerValue() < 17)
+                    {
+                        hitButton.PerformClick();
+                    }
+                    else
+                    {
+                        standButton.PerformClick();
+                    }
+                }
             }
-            EndTurn();
-
         }
 
 
@@ -80,7 +112,7 @@ namespace Blackjack
                 count = count + Convert.ToInt16(c.Tag);
 
             }
-
+            
             //some simple ace logic
             if (count > 21)
             {
@@ -97,8 +129,21 @@ namespace Blackjack
 
                 }
             }
-
             playerCountLabel.Text = count.ToString();
+
+
+            //checks if the game should end the turn for the player. eg: if they have 21 or are bust.
+            if (count > 20)
+            {
+
+                standButton.Invoke(new MethodInvoker(delegate
+                {
+                    standButton.PerformClick();
+                }));
+
+            }
+
+
             return count;
         }
 
@@ -118,20 +163,27 @@ namespace Blackjack
             if(result == -1)
             {
                 scoreBanner.BackColor = Color.IndianRed;
-                resultLabel.Text = "Player Lost";
+                resultLabel.Text = playerLabel.Text + " Lost";
 
             }
             else if (result == 0)
             {
                 scoreBanner.BackColor = Color.MediumPurple;
-                resultLabel.Text = "Player Tied";
+                resultLabel.Text = playerLabel.Text + " Tied";
             }
             else if (result == 1)
             {
                 scoreBanner.BackColor = Color.Green;
-                resultLabel.Text = "Player Won";
+                resultLabel.Text = playerLabel.Text + " Won";
             }
             scoreBanner.Show();
         }
+
+        private void profileImage_Click(object sender, EventArgs e)
+        {
+            if (autoplay) { autoplay = false; } else { autoplay = true; }
+            AutoPlayCheck();
+        }
     }
-}
+    }
+

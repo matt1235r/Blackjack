@@ -31,41 +31,33 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Player));
             this.playerCountLabel = new System.Windows.Forms.Label();
-            this.playerLayoutPanel = new System.Windows.Forms.PictureBox();
             this.cardImageList = new System.Windows.Forms.ImageList(this.components);
             this.hitButton = new System.Windows.Forms.Button();
             this.standButton = new System.Windows.Forms.Button();
             this.scoreBanner = new System.Windows.Forms.Panel();
             this.resultLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.playerLayoutPanel)).BeginInit();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.playerLabel = new System.Windows.Forms.Label();
+            this.profileImage = new System.Windows.Forms.PictureBox();
+            this.playerLayoutPanel = new System.Windows.Forms.PictureBox();
             this.scoreBanner.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.profileImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.playerLayoutPanel)).BeginInit();
             this.SuspendLayout();
             // 
             // playerCountLabel
             // 
             this.playerCountLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.playerCountLabel.AutoSize = true;
-            this.playerCountLabel.BackColor = System.Drawing.Color.Gray;
+            this.playerCountLabel.BackColor = System.Drawing.Color.LightSeaGreen;
             this.playerCountLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.playerCountLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.playerCountLabel.Location = new System.Drawing.Point(55, 200);
+            this.playerCountLabel.ForeColor = System.Drawing.Color.White;
+            this.playerCountLabel.Location = new System.Drawing.Point(68, 174);
             this.playerCountLabel.Name = "playerCountLabel";
             this.playerCountLabel.Size = new System.Drawing.Size(32, 24);
             this.playerCountLabel.TabIndex = 17;
             this.playerCountLabel.Text = "04";
             this.playerCountLabel.Click += new System.EventHandler(this.playerCountLabel_Click);
-            // 
-            // playerLayoutPanel
-            // 
-            this.playerLayoutPanel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.playerLayoutPanel.BackColor = System.Drawing.Color.Transparent;
-            this.playerLayoutPanel.Location = new System.Drawing.Point(2, 17);
-            this.playerLayoutPanel.Margin = new System.Windows.Forms.Padding(2);
-            this.playerLayoutPanel.Name = "playerLayoutPanel";
-            this.playerLayoutPanel.Size = new System.Drawing.Size(167, 123);
-            this.playerLayoutPanel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.playerLayoutPanel.TabIndex = 18;
-            this.playerLayoutPanel.TabStop = false;
             // 
             // cardImageList
             // 
@@ -139,9 +131,9 @@
             // 
             // standButton
             // 
-            this.standButton.BackColor = System.Drawing.Color.YellowGreen;
+            this.standButton.BackColor = System.Drawing.Color.LightSkyBlue;
             this.standButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.standButton.Location = new System.Drawing.Point(97, 145);
+            this.standButton.Location = new System.Drawing.Point(89, 145);
             this.standButton.Name = "standButton";
             this.standButton.Size = new System.Drawing.Size(75, 23);
             this.standButton.TabIndex = 20;
@@ -169,11 +161,47 @@
             this.resultLabel.TabIndex = 22;
             this.resultLabel.Text = "Player Won";
             // 
+            // playerLabel
+            // 
+            this.playerLabel.AutoSize = true;
+            this.playerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.playerLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.playerLabel.Location = new System.Drawing.Point(53, 205);
+            this.playerLabel.Name = "playerLabel";
+            this.playerLabel.Size = new System.Drawing.Size(65, 16);
+            this.playerLabel.TabIndex = 23;
+            this.playerLabel.Text = "Player 1";
+            // 
+            // profileImage
+            // 
+            this.profileImage.Image = global::Blackjack.Properties.Resources.person_icon;
+            this.profileImage.Location = new System.Drawing.Point(3, 174);
+            this.profileImage.Name = "profileImage";
+            this.profileImage.Size = new System.Drawing.Size(49, 47);
+            this.profileImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.profileImage.TabIndex = 22;
+            this.profileImage.TabStop = false;
+            this.profileImage.Click += new System.EventHandler(this.profileImage_Click);
+            // 
+            // playerLayoutPanel
+            // 
+            this.playerLayoutPanel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.playerLayoutPanel.BackColor = System.Drawing.Color.Transparent;
+            this.playerLayoutPanel.Location = new System.Drawing.Point(2, 17);
+            this.playerLayoutPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.playerLayoutPanel.Name = "playerLayoutPanel";
+            this.playerLayoutPanel.Size = new System.Drawing.Size(167, 123);
+            this.playerLayoutPanel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.playerLayoutPanel.TabIndex = 18;
+            this.playerLayoutPanel.TabStop = false;
+            // 
             // Player
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.playerLabel);
+            this.Controls.Add(this.profileImage);
             this.Controls.Add(this.standButton);
             this.Controls.Add(this.hitButton);
             this.Controls.Add(this.playerLayoutPanel);
@@ -182,9 +210,10 @@
             this.Name = "Player";
             this.Size = new System.Drawing.Size(172, 224);
             this.Load += new System.EventHandler(this.Player_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.playerLayoutPanel)).EndInit();
             this.scoreBanner.ResumeLayout(false);
             this.scoreBanner.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.profileImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.playerLayoutPanel)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -199,5 +228,8 @@
         private System.Windows.Forms.Button standButton;
         private System.Windows.Forms.Panel scoreBanner;
         private System.Windows.Forms.Label resultLabel;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.PictureBox profileImage;
+        private System.Windows.Forms.Label playerLabel;
     }
 }
