@@ -17,11 +17,21 @@ namespace Blackjack
 
         bool autoplay;
 
-        public Player(GameWindow parent, bool auto = true)
+        bool isPlayer1 = false;
+
+        public Player(GameWindow parent, bool playerCanBeBot = true)
         {
             InitializeComponent();
             window = parent;
-            autoplay = auto;
+            
+            //game needs to know about player 1 to stop you changing it to a bot.
+            isPlayer1 = !playerCanBeBot;
+
+            //if not player 1 then game defaults to bot mode.
+            if (playerCanBeBot)
+            {
+                autoplay = true;
+            }
         }
 
         public Player()
@@ -181,8 +191,13 @@ namespace Blackjack
 
         private void profileImage_Click(object sender, EventArgs e)
         {
-            if (autoplay) { autoplay = false; } else { autoplay = true; }
-            AutoPlayCheck();
+            //will not let you change to CPU bot if player 1 because it breaks things.
+            if (!isPlayer1)
+            {
+                if (autoplay) { autoplay = false; } else { autoplay = true; }
+                AutoPlayCheck();
+            }
+            
         }
     }
     }

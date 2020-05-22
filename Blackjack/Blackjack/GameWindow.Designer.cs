@@ -33,7 +33,6 @@
             this.removePlayer = new System.Windows.Forms.Button();
             this.newPlayer = new System.Windows.Forms.Button();
             this.miscImageList = new System.Windows.Forms.ImageList(this.components);
-            this.dealButton = new System.Windows.Forms.Button();
             this.dealerCountLabel = new System.Windows.Forms.Label();
             this.cardImageList = new System.Windows.Forms.ImageList(this.components);
             this.bannerTimer = new System.Windows.Forms.Timer(this.components);
@@ -44,6 +43,7 @@
             this.deckSizeLabel = new System.Windows.Forms.Label();
             this.dealerLayoutPanel = new System.Windows.Forms.PictureBox();
             this.playerContainer = new System.Windows.Forms.Panel();
+            this.toolTipHandler = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.helpButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.settingsButton)).BeginInit();
@@ -62,6 +62,7 @@
             this.removePlayer.Size = new System.Drawing.Size(244, 35);
             this.removePlayer.TabIndex = 2;
             this.removePlayer.Text = "Remove Player";
+            this.toolTipHandler.SetToolTip(this.removePlayer, "Remove a player from the game. (Min 1)");
             this.removePlayer.UseVisualStyleBackColor = false;
             this.removePlayer.Click += new System.EventHandler(this.removePlayer_Click);
             // 
@@ -77,6 +78,7 @@
             this.newPlayer.Size = new System.Drawing.Size(223, 35);
             this.newPlayer.TabIndex = 3;
             this.newPlayer.Text = "New Player";
+            this.toolTipHandler.SetToolTip(this.newPlayer, "Add a new player to the game. (Max 4)");
             this.newPlayer.UseVisualStyleBackColor = false;
             this.newPlayer.Click += new System.EventHandler(this.newPlayer_Click);
             // 
@@ -85,19 +87,6 @@
             this.miscImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("miscImageList.ImageStream")));
             this.miscImageList.TransparentColor = System.Drawing.Color.Transparent;
             this.miscImageList.Images.SetKeyName(0, "stand.PNG");
-            // 
-            // dealButton
-            // 
-            this.dealButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.dealButton.BackColor = System.Drawing.Color.Peru;
-            this.dealButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.dealButton.Location = new System.Drawing.Point(9, 532);
-            this.dealButton.Name = "dealButton";
-            this.dealButton.Size = new System.Drawing.Size(119, 35);
-            this.dealButton.TabIndex = 4;
-            this.dealButton.Text = "Menu";
-            this.dealButton.UseVisualStyleBackColor = false;
-            this.dealButton.Click += new System.EventHandler(this.dealButton_Click);
             // 
             // dealerCountLabel
             // 
@@ -204,6 +193,7 @@
             this.helpButton.TabIndex = 16;
             this.helpButton.TabStop = false;
             this.helpButton.Tag = "0";
+            this.toolTipHandler.SetToolTip(this.helpButton, "View Help Window");
             this.helpButton.Click += new System.EventHandler(this.helpButton_Click);
             // 
             // settingsButton
@@ -278,7 +268,6 @@
             this.ClientSize = new System.Drawing.Size(1023, 574);
             this.Controls.Add(this.dealerCountLabel);
             this.Controls.Add(this.dealerLayoutPanel);
-            this.Controls.Add(this.dealButton);
             this.Controls.Add(this.newPlayer);
             this.Controls.Add(this.removePlayer);
             this.Controls.Add(this.panel1);
@@ -304,7 +293,6 @@
         #endregion
         private System.Windows.Forms.Button removePlayer;
         private System.Windows.Forms.Button newPlayer;
-        private System.Windows.Forms.Button dealButton;
         private System.Windows.Forms.Label dealerCountLabel;
         private System.Windows.Forms.ImageList cardImageList;
         private System.Windows.Forms.ImageList miscImageList;
@@ -316,6 +304,7 @@
         private System.Windows.Forms.PictureBox dealerLayoutPanel;
         private System.Windows.Forms.Panel playerContainer;
         private System.Windows.Forms.PictureBox helpButton;
+        private System.Windows.Forms.ToolTip toolTipHandler;
     }
 }
 

@@ -16,5 +16,10 @@ namespace Blackjack
         {
             InitializeComponent();
         }
+
+        private void Help_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -116,6 +116,7 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Text = "Blackjack Help";
+            this.Load += new System.EventHandler(this.Help_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);

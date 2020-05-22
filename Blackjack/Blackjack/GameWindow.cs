@@ -91,7 +91,7 @@ namespace Blackjack
         private void dealerTurn()
         {
             ((PictureBox)dealerLayoutPanel.Controls[1]).Image = null;
-            while (calcDealerValue() <= 17)
+            while (calcDealerValue() <= 16)
             {
                 DeckClass.getNewCard(dealerLayoutPanel);
                 
