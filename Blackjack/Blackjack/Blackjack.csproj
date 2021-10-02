@@ -50,6 +50,12 @@
   <ItemGroup>
     <Compile Include="Card.cs" />
     <Compile Include="DeckClass.cs" />
+    <Compile Include="CardDisplay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>CardDisplay.cs</DependentUpon>
+    </Compile>
     <Compile Include="GameWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +83,9 @@
       <DependentUpon>SettingsWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="SF.cs" />
+    <EmbeddedResource Include="CardDisplay.resx">
+      <DependentUpon>CardDisplay.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GameWindow.resx">
       <DependentUpon>GameWindow.cs</DependentUpon>
     </EmbeddedResource>

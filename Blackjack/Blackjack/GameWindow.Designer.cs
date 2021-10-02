@@ -222,6 +222,7 @@
             this.muteButton.TabIndex = 14;
             this.muteButton.TabStop = false;
             this.muteButton.Tag = "0";
+            this.muteButton.Click += new System.EventHandler(this.muteButton_Click);
             this.muteButton.MouseDown += new System.Windows.Forms.MouseEventHandler(this.muteButton_MouseDown);
             // 
             // deckSizeLabel

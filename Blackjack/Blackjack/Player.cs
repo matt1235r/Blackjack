@@ -199,6 +199,16 @@ namespace Blackjack
             }
             
         }
+
+        private void playerLayoutPanel_DoubleClick(object sender, EventArgs e)
+        {
+            
+            foreach (Control c in playerLayoutPanel.Controls)
+            {
+                MessageBox.Show(c.BackgroundImage.Tag.ToString());
+
+            }
+        }
     }
     }
 

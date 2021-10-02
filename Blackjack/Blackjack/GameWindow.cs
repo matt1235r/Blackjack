@@ -35,7 +35,7 @@ namespace Blackjack
 
             }
 
-            //some simple ace logic
+            //ace logic
             if (count > 21)
             {
                 foreach (Control c in dealerLayoutPanel.Controls)
@@ -228,6 +228,12 @@ namespace Blackjack
         private void playerContainer_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void muteButton_Click(object sender, EventArgs e)
+        {
+            //Form1 form1 = new Form1();
+            //form1.ShowDialog();
         }
     }
 }

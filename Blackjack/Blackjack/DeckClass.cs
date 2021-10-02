@@ -58,7 +58,7 @@ namespace Blackjack
                 new Card() { Value = 6, LongName = "Six Clubs", ImageName = "_6C" },
                 new Card(){ Value = 7, LongName = "Seven Clubs", ImageName = "_7C" },
                 new Card() { Value = 8, LongName = "Eight Clubs", ImageName = "_8C" },
-                new Card() { Value = 9, LongName = "Nine Clubs", ImageName= "9C" },
+                new Card() { Value = 9, LongName = "Nine Clubs", ImageName= "_9C" },
                 new Card() { Value = 10, LongName = "Ten Clubs", ImageName = "_10C" },
                 new Card() { Value = 10, LongName = "Jack Clubs", ImageName = "JC" },
                 new Card() { Value = 10, LongName = "Queen Clubs", ImageName = "QC" },
@@ -148,7 +148,18 @@ namespace Blackjack
             //the card holder control is given the appropriate values and the layout is setup so the cards overlap 
             //like a normal deck of cards.
             cardHolder.Tag = card.Value;
+            
             cardHolder.BackgroundImage = (Image)Properties.Resources.ResourceManager.GetObject(card.ImageName);
+            try
+            {
+                cardHolder.BackgroundImage.Tag = card.ImageName;
+            }
+            catch (Exception)
+            {
+
+                
+            }
+            
             cardHolder.Anchor = (AnchorStyles.Bottom | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left);
             cardHolder.BackgroundImageLayout = ImageLayout.Stretch;
             cardHolder.SizeMode = PictureBoxSizeMode.StretchImage;

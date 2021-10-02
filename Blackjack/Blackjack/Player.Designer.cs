@@ -194,6 +194,7 @@
             this.playerLayoutPanel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.playerLayoutPanel.TabIndex = 18;
             this.playerLayoutPanel.TabStop = false;
+            this.playerLayoutPanel.DoubleClick += new System.EventHandler(this.playerLayoutPanel_DoubleClick);
             // 
             // Player
             // 
